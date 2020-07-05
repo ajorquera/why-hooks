@@ -1,0 +1,15 @@
+{
+  "name": "why-hooks",
+  "version": "1.0.0",
+  "description": "Presentation - Why hooks in React?",
+  "main": "index.js",
+  "repository": "git@github.com:ajorquera/why-hooks.git",
+  "author": "andres <jorquera.ad@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "reveal-md": "^4.1.0"
+  },
+  "scripts": {
+    "start": "reveal-md PITCHME.md -w"
+  }
+}
