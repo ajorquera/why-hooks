@@ -28,20 +28,25 @@ Issues in react 2018
 
 <img src="https://miro.medium.com/max/1400/0*abdiidcjyscMpxwD" alt="wrapper-hell" width="200"/>
 
----- 
+----
 
 ## Syntax confusion 
-* React is lying to us - Renderless components
+* React is lying to us
+* Cluttered code
 
----- 
+![code-snipped-syntax](images/syntax-confusion.png)
+
+----
 
 ## Reusability in components
 * It can be difficult to reuse logic in class components
 
+![code-snipped-reusability](images/reusability-class.png)
+
 Note: 
 * Mixins used to be an option, but react team went away from it
 
----- 
+----
 
 ## Classes are hard for humans and robots
 * this
@@ -69,33 +74,7 @@ Where can we apply hooks in our projects
 #### Modals
 Now, we are doing something like this
 
-```jsx
-const MyView = (props) => {
-    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-    const [isWorkspaceModalOpen, setIsWorkspaceModalOpen] = useState(false);
-    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-
-    return (
-        <div>
-            <button onClick={() => setIsContactModalOpen(true)}>Open Contact</button>
-            <button onClick={() => setIsWorkspaceModalOpen(true)}>Open Add Workspace</button>
-            <button onClick={() => setIsConfirmModalOpen(true)}>Open DeleteWorkspace</button>
-
-            <Modal title="Contact Form" open={isContactModalOpen} onClose={() => setIsContactModalOpen(false)}>
-                {(props) => <ContactForm onClose={props.onClose} >
-            </Modal>
-
-            <Modal open={isWorkspaceModalOpen} onClose={() => setIsWorkspaceModalOpen(false)}>
-                {(props) => <AddWorkspace onClose={props.onClose} data={someData} >
-            </Modal>
-
-            <Modal open={isConfirmModalOpen} onClose={() => setIsConfirmModalOpen(false)}>
-                {(props) => <ConfirmModal onClose={props.onClose} >
-            </Modal>
-        </div>
-    );
-};
-```
+![snipped-code-modals](images/modals-code.png)
 
 Note: 
 * For simplicity, I wont explain every aspect of it
@@ -105,26 +84,29 @@ Note:
 
 ----
 
-```jsx
-const MyView = (props) => {
-   const [openContactModal, close] = useModal(ContactForm, {title: 'Contact Form'});
-   const [openWorkspaceModal] = useModal(AddWorkspace);
-   const [openConfirmModal] = useModal(ConfirmModal);
-
-    return (
-        <div>
-            <button onClick={openContactModal}>Open Contact</button>
-            <button onClick={openWorkspaceModal}>Open Add Workspace</button>
-            <button onClick={openConfirmModal}>Open DeleteWorkspace</button>
-        </div>
-    );
-};
-```
+![snipped-code-modals-hooks](images/modals-code-hooks.png)
 
 Note: 
 * We dont manage the state, the hook does
 * We dont need to make the component part of the react tree
 
+---
+
+# REFERENCES
+* [github.com/ajorquera/why-hooks](https://github.com/ajorquera/why-hooks)
+* [Video React Conf 2018](https://www.youtube.com/watch?v=dpw9EHDh2bM)
+* [React official docs](https://reactjs.org/docs/hooks-intro.html)
+* [Making Sense of React Hooks](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) - Dan Abramov. Co-author Redux and Create React App
+
+---
+
+# Conclusion
+
+![baby-lets-do-it](images/baby.jpg)
+
+Note: 
+* Programming Principles SOLID, KISS, DRY
+* I want to use PULL not push. 
 
 
 
